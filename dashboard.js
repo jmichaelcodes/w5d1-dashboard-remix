@@ -76,6 +76,7 @@ function rowIDs(position) {
 // 9. Make an array of objects, each object representing a single row in the table. Remove the commas from the ID column and convert it to an actual Number data type. Example: [{id: 1001, firstName: 'Lorem', lastName: 'ipsum', department: 'dolor', client: 'sit'}]
 var rows = document.querySelectorAll('tr');
 var rowArray = Array.from(rows);
+var objectArray = [];
 for (var i = 1; i < rowArray.length; i++) {
     var firstItems = rowArray[i].children[0];
     var noComma = Number(firstItems.innerText.replace(/,/g , ''))
@@ -87,9 +88,10 @@ object.firstName = rowArray[i].children[1].innerHTML;
 object.lastName = rowArray[i].children[2].innerHTML;
 object.department = rowArray[i].children[3].innerHTML;
 object.client = rowArray[i].children[4].innerHTML;
-console.log(object);
-
+objectArray.push(object);
 }
+
+console.log(objectArray);
 
 // 10. Make each word in the table capitalized.
 for(var i = 1; i < rowArray.length; i++) {
@@ -99,13 +101,13 @@ for(var i = 1; i < rowArray.length; i++) {
     allItems(3);
     allItems(4)
 
-    function allItems(position) {
+}
+
+function allItems(position) {
     var items = rowArray[i].children[position];
 
     var item = items.innerText;
     var itemEnding = item.slice(1);
     var capitalFirstLetter = item.charAt(0).toUpperCase();
     items.innerText  = capitalFirstLetter + itemEnding;
-}
-
 }
